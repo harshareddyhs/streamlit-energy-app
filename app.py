@@ -13,10 +13,7 @@ if uploaded_file is not None:
     st.write("### Summary Statistics")
     st.write(df.describe())
 
-    # Plotting example
-    if 'Energy_Consumption' in df.columns:
-        st.line_chart(df['Energy_Consumption'])
-
-    # Allow user to choose columns
-    selected_column = st.selectbox("Select column to visualize", df.columns)
-    st.line_chart(df[selected_column])
+    st.write("### Line Chart")
+    st.line_chart(df.select_dtypes(include='number'))
+else:
+    st.warning("Please upload a CSV file to proceed.")
